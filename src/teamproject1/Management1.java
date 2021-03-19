@@ -15,6 +15,7 @@ public class Management1 {
         int listLength = 0;
 
         boolean end = false; //프로그램 종료
+        boolean hasBook = false;
         System.out.println(books.length);//2차 배열의 길이
 //        System.out.println(books[0].length);//책의 속성 수
 
@@ -60,13 +61,34 @@ public class Management1 {
 
                     break;
                 case 4:
+                    System.out.println("# 수정하실 책 번호를 입력하세요.");
+                    System.out.print("> ");
+                    String changeNum = sc.next();//수정할 책 번호
+                    hasBook = false;//책 검색 결과 변수
 
+                    for (int j = 0; j < listLength; j++) {
+                        if (books[j][0].equals(changeNum)) {
+                            hasBook = true;
+
+                            //어떤 항목을 수정할지 결정
+                            System.out.println("- 해당 도서정보를 수정합니다.");
+                            System.out.println("- 어떤 정보를 수정하시겠습니까? 1. [제목], 2. [저자], 3. [출판사], 4. [가격]");
+                            System.out.print("> ");
+                            int changeChoice = sc.nextInt();
+                            //만드는중
+
+
+                        }
+                    }
+                    if (!hasBook) {
+                        System.out.println("해당 도서는 목록에 없습니다.");
+                    }
                     break;
                 case 5:
                     System.out.println("# 삭제하실 책 번호를 입력하세요.");
                     System.out.print("> ");
                     String delNum = sc.next();//지울 책 번호
-                    boolean hasBook = false;//책 검색 결과 변수
+                    hasBook = false;//책 검색 결과 변수
 
                     for (int j = 0; j < listLength; j++) {
                         if (books[j][0].equals(delNum)) {

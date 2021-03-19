@@ -78,7 +78,8 @@ class Management1 {
                             for (int k = 0; k < temp5.length; k++) {
                                 temp5[k] = books[k];
                             }
-                            books = temp5; temp5 = null;
+                            books = temp5;
+                            temp5 = null;
 
                             i--;
                             listLength--;
