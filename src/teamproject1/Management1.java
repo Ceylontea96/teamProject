@@ -71,9 +71,17 @@ public class Management1 {
                     for (int j = 0; j < listLength; j++) {
                         if (books[j][0].equals(delNum)) {
                             hasBook = true;//해당 도서를 찾으면 논리값을 true로 변환
+                            for (int k = j; k < listLength - 1; k++) {
+                                books[k] = books[k + 1];
+                            }
+                            String[][] temp5 = new String[listLength - 1][];
+                            for (int k = 0; k < temp5.length; k++) {
+                                temp5[k] = books[k];
+                            }
+                            books = temp5; temp5 = null;
+
                             i--;
                             listLength--;
-
 
                         }
                     }
