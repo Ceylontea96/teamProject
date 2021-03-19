@@ -16,8 +16,16 @@ public class MiSun {
 
         boolean end = false; //프로그램 종료
         boolean hasBook = false;
-        System.out.println(books.length);//2차 배열의 길이
+//        System.out.println(books.length);//2차 배열의 길이
 //        System.out.println(books[0].length);//책의 속성 수
+
+        // 테스트용 임시 배열
+        /*books = new String[][]{
+                {"A000", "꼭두각시 살인사건", "다니엘 콜", "북플라자", "14000"},
+                {"B100", "질서 너머", "조던 피터슨", "웅진지식하우스", "16000"},
+                {"C200", "코스모스", "칼 세이건", "사이언스북스", "17000"},
+                {"D300", "정보처리기사 실기", "정보처리기술사 연구회", "건기원", "30000"}
+        };*/
 
         while (true) {
             System.out.println("=====도서관리 프로그램=====");
@@ -54,6 +62,7 @@ public class MiSun {
                     listLength++;
                     System.out.println(listLength);
                     break;
+
                 case 2:
                     for (String[] book : books) {
                         System.out.println("=============================== 도 서 정 보 ===============================");
@@ -62,33 +71,43 @@ public class MiSun {
                         for (String bookSearch : book) {
                             System.out.print(bookSearch + "\t\t");
                         }
-                        System.out.println("");
+                        System.out.println("\n");
                     }
-
                     break;
+
                 case 3:
-                    /*while (true) {
-                        // 찾을 책번호 입력받기
-                        System.out.println("찾으려는 책의 책번호를 입력하세요.");
-                        System.out.print("> ");
-                        String bookName = sc.next();
+                    System.out.println("# 검색하실 책 번호를 입력하세요.");
+                    System.out.print("> ");
+                    String searchBookNum = sc.next(); // 검색할 책 번호 입력받기
+                    hasBook = false;//책 검색 결과 변수
 
-                        // books 배열안에서 책번호가 있는 배열 찾기
-                        for (int idx = 0; idx < listLength; idx++) {
-                            String temp2;
-                            temp2 = books[idx][0];
+                    for (int idx = 0; idx < listLength; idx++) {
+                        if (books[idx][0].equals(searchBookNum)) { // 전체 책 중에서 입력받은 책 번호와 비교 후 찾으면
+                            hasBook = true;
 
-                            // 입력한 책번호가 배열안에 있는 책번호와 같으면 해당 배열 출력
-                            if (temp2.equals(bookName)) {
-                                System.out.println(Arrays.toString(books[idx]));
-                                break;
+                            // 찾은 책의 책 번호를 임시 저장 (String)
+                            String temp3 = books[idx][0];
+
+                            // 입력한 책 번호가 찾은 책 번호와 같으면 해당 배열 출력
+                            if (temp3.equals(searchBookNum)) {
+                                System.out.println("=============================== 도 서 정 보 ===============================");
+                                System.out.println("책 번호 \t\t 책 제목 \t\t     저자 \t\t       출판사\t\t   가격");
+                                System.out.println("===========================================================================");
+                                for (String bookSearch : books[idx]) {
+                                    System.out.print(bookSearch + "\t\t");
+                                }
+                                System.out.println("\n");
+                                return;
+                            } else {
+                                continue;
                             }
-                            System.out.println();
                         }
-
-                    }*/
-
+                    }
+                    if (!hasBook) {
+                        System.out.println("\n해당 도서는 목록에 없습니다.\n");
+                    }
                     break;
+
                 case 4:
                     System.out.println("# 수정하실 책 번호를 입력하세요.");
                     System.out.print("> ");
@@ -105,14 +124,13 @@ public class MiSun {
                             System.out.print("> ");
                             int changeChoice = sc.nextInt();
                             //만드는중
-
-
                         }
                     }
                     if (!hasBook) {
                         System.out.println("해당 도서는 목록에 없습니다.");
                     }
                     break;
+
                 case 5:
                     System.out.println("# 삭제하실 책 번호를 입력하세요.");
                     System.out.print("> ");
@@ -141,20 +159,19 @@ public class MiSun {
                         //아래와 같이 출력함.
                         System.out.println("해당 도서는 목록에 없습니다.");
                     }
-
                     break;
+
                 case 6:
                     end = true;
                     System.out.println("프로그램을 종료합니다.");
                     break;
+
                 default:
                     System.out.println("메뉴를 잘못 입력했습니다.");
                     continue;
             }//스위치문 종료
             if (end) break;
+        }//메뉴화면 while end
 
-        }
-
-
-    }
-}
+    }//main end
+}//class end

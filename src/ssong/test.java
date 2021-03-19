@@ -1,6 +1,5 @@
 package ssong;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class test {
@@ -21,6 +20,8 @@ public class test {
 
         Scanner sc = new Scanner(System.in);
 
+        boolean hasBook = false;
+
         // 배열을 값 목록으로 생성
         String[][] books = {
                 {"A000", "꼭두각시 살인사건", "다니엘 콜", "북플라자", "14000"},
@@ -34,30 +35,38 @@ public class test {
         System.out.println("책번호: " + books[0][0]); // 원하는 책의 책번호: books[찾을 책이 있는 인덱스번호][0]
         */
 
-        while (true) {
-            // 찾을 책번호 입력받기
-            System.out.println("찾으려는 책의 책번호를 입력하세요.");
-            System.out.print("> ");
-            String bookName = sc.next();
 
-            while (true) {
-                // books 배열안에서 책번호가 있는 배열 찾기
-                for (int idx = 0; idx < books.length; idx++) {
-                    String temp2;
-                    temp2 = books[idx][0];
+        System.out.println("# 검색하실 책 번호를 입력하세요.");
+        System.out.print("> ");
+        String searchBookNum = sc.next(); // 검색할 책 번호 입력받기
+        hasBook = false;//책 검색 결과 변수
 
-                    // 입력한 책번호가 배열안에 있는 책번호와 같으면 해당 배열 출력
-                    if (temp2.equals(bookName)) {
-                        System.out.println(Arrays.toString(books[idx]));
-                        break;
-                    } else {
-                        continue;
+        for (int idx = 0; idx < books.length; idx++) {
+            if (books[idx][0].equals(searchBookNum)) { // 전체 책 중에서 입력받은 책 번호와 비교 후 찾으면
+                hasBook = true;
+
+                // 찾은 책의 책 번호를 임시 저장 (String)
+                String temp3 = books[idx][0];
+
+                // 입력한 책 번호가 찾은 책 번호와 같으면 해당 배열 출력
+                if (temp3.equals(searchBookNum)) {
+                    System.out.println("=============================== 도 서 정 보 ===============================");
+                    System.out.println("책 번호 \t\t 책 제목 \t\t     저자 \t\t       출판사\t\t   가격");
+                    System.out.println("===========================================================================");
+                    for (String bookSearch : books[idx]) {
+                        System.out.print(bookSearch + "\t\t");
                     }
-                }
-                System.out.println("해당 책을 찾을 수 없습니다.");
-                break;
-            }
+                    System.out.println("\n");
 
+//                        System.out.println(Arrays.toString(books[idx]));
+                    return;
+                } else {
+                    continue;
+                }
+            }
+        }
+        if (!hasBook) {
+            System.out.println("\n해당 도서는 목록에 없습니다.\n");
         }
 
 
