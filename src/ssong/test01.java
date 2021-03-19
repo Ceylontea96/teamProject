@@ -1,9 +1,9 @@
-package day07;
+package ssong;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Management1 {
+class Management1 {
 
     public static void main(String[] args) {
 
