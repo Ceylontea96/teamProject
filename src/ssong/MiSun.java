@@ -97,7 +97,7 @@ public class MiSun {
                                     System.out.print(bookSearch + "\t\t");
                                 }
                                 System.out.println("\n");
-                                return;
+                                return;//return 적용시 검색 완료 후 전체 while문이 종료되어버립니다.
                             } else {
                                 continue;
                             }
