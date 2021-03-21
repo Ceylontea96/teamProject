@@ -14,7 +14,8 @@ public class Jinho1 {
         String[][] memberData = {
                 {"admin", "admin1234", "administrator"},
                 {"user", "user123",}
-        };//id, passwd, 계정 코드(user는 아직 미정)
+        };
+        //id, passwd, 계정 코드(user는 아직 미정)
 
         int memNum = 2;
         //권한 부여
@@ -50,19 +51,20 @@ public class Jinho1 {
                         if (idInsert.equals(memberData[0][0])) {
                             hasId = true;
 
-                            System.out.print("* 비밀번호 >  ");
-                            String pwInsert = sc.next();
+                                System.out.print("* 비밀번호 >  ");
+                                String pwInsert = sc.next();
 
-                            if (pwInsert.equals(memberData[0][1])) {
-                                login = true;
-                                adminAccess = true;
-                                break;
-                            } else {
-                                System.out.println("- 잘못된 비밀번호입니다.\n");
-                            }
+                                if (pwInsert.equals(memberData[0][1])) {
+                                    login = true;
+                                    adminAccess = true;
+                                    break;
+                                } else {
+                                    System.out.println("- 잘못된 비밀번호입니다.\n");
+                                }
                         }//로그인 시도 id가 관리자 id인지 여부 판별 if문 종료
 
-                        for (int i = 0; i < memberData.length; i++) {
+                        //일반회원 로그인 과정
+                        for (int i = 1; i < memberData.length; i++) {
                             if (memberData[i][0].equals(idInsert)) {
                                 hasId = true;
 
@@ -311,6 +313,7 @@ public class Jinho1 {
                             String changeNum = sc.next();//수정할 책 번호
                             hasBook = false;//책 검색 결과 변수
 
+                            int q = 0;
                             for (int j = 0; j < listLength; j++) {
                                 if (books[j][0].equals(changeNum)) {// 배열의 0번인덱스가 입력받은 책 번호와 같다면
                                     hasBook = true;//검색결과를 true로 바꿔줌.
@@ -355,6 +358,8 @@ public class Jinho1 {
                                             default:
                                                 System.out.println("1 ~ 5 사이의 숫자를 입력해주세요.\n");
                                         }//수정 내용 입력 스위치문 종료
+                                        q = j;
+
                                         if (changeEnd) break;
                                     }//수정 내용 입력 while문 종료
                                     //return; 적용시 hasBook이 항상 true로 적용된다고 나옴
@@ -363,6 +368,13 @@ public class Jinho1 {
                             if (!hasBook) { //hasBook이 여전히 false라면 해당 도서를 찾지 못한것.
                                 System.out.println("해당 도서는 목록에 없습니다.\n");
                             }
+                            System.out.println("=============================== 도 서 정 보 ===============================");
+                            System.out.println("책 번호 \t\t 책 제목 \t\t     저자 \t\t       출판사\t\t   가격");
+                            System.out.println("===========================================================================");
+                            for (String bookSearch : books[q]) {
+                                System.out.print(bookSearch + "\t\t");
+                            }////////////////////////////////////////
+                            System.out.println("\n");
                             System.out.println();
                             break;
                         case 5://도서정보 삭제
