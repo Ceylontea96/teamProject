@@ -169,7 +169,7 @@ public class MemberProcess {
                 }
                 break;
             }
-            if (end) {//프로그램 종료
+            if (end) {//로그아웃
                 System.out.println("도서관리 프로그램을 종료합니다.");
                 break;
             }
