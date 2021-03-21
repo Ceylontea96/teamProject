@@ -22,6 +22,7 @@ public class Jinho1 {
         //선호도 판별용 1차원 배열 생성
         int[] like = {};
 
+        //회원관리 만들면 end를 logout으로 고쳐서 작동
         boolean end = false; //프로그램 종료
         boolean hasBook = false;
         System.out.println(books.length);//2차 배열의 길이
