@@ -20,6 +20,13 @@ public class test {
 
         Scanner sc = new Scanner(System.in);
 
+        int listLength = 0;//등록된 책 수량 카운트 변수
+        int i = 0;//책 수량 카운트 변수(신규도서 등록할때 이용)
+
+        //선호도 판별용 1차원 배열 생성
+        int[] like = {};
+
+        boolean logout = false; //로그아웃
         boolean hasBook = false;
 
         // 배열을 값 목록으로 생성
@@ -36,39 +43,37 @@ public class test {
         */
 
 
-        System.out.println("# 검색하실 책 번호를 입력하세요.");
+        System.out.println("\n# 검색하실 책 번호를 입력하세요.");
         System.out.print("> ");
         String searchBookNum = sc.next(); // 검색할 책 번호 입력받기
         hasBook = false;//책 검색 결과 변수
 
+        // 테스트 끝나면 books.length -> listLength 수정하기
         for (int idx = 0; idx < books.length; idx++) {
             if (books[idx][0].equals(searchBookNum)) { // 전체 책 중에서 입력받은 책 번호와 비교 후 찾으면
                 hasBook = true;
+                //like[idx]++;//선호도 측정을 위해 카운트해줌.
 
                 // 찾은 책의 책 번호를 임시 저장 (String)
                 String temp3 = books[idx][0];
 
                 // 입력한 책 번호가 찾은 책 번호와 같으면 해당 배열 출력
                 if (temp3.equals(searchBookNum)) {
-                    System.out.println("=============================== 도 서 정 보 ===============================");
-                    System.out.println("책 번호 \t\t 책 제목 \t\t     저자 \t\t       출판사\t\t   가격");
-                    System.out.println("===========================================================================");
+                    System.out.println("\n============================================= 도 서 정 보 =============================================");
+//                    System.out.println("  번  호 \t\t     제  목 \t\t     저  자 \t\t     출판사\t\t     가  격 \t\t   선호도");
+                    System.out.printf("%-15s%-15s%-15s%-15s%-15s%-15s%n", "번  호", "제  목", "저  자", "출판사", "가  격", "선호도");
+                    System.out.println("=======================================================================================================");
                     for (String bookSearch : books[idx]) {
-                        System.out.print(bookSearch + "\t\t");
+                        System.out.printf("%-15s", bookSearch);
                     }
-                    System.out.println("\n");
-
-//                        System.out.println(Arrays.toString(books[idx]));
-                    return;
-                } else {
-                    continue;
+                    System.out.println();
                 }
             }
         }
+
         if (!hasBook) {
             System.out.println("\n해당 도서는 목록에 없습니다.\n");
         }
-
 
     }
 }
