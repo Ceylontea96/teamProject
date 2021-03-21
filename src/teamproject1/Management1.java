@@ -247,7 +247,7 @@ public class Management1 {
                             like = temp;
                             temp = null;
 
-                            System.out.println(Arrays.toString(like));
+//                            System.out.println(Arrays.toString(like));
 
                             books[i] = temp1;
                             temp1 = null;
